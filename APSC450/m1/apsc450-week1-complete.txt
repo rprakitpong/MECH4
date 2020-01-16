@@ -1,0 +1,66 @@
+Ethics - some basic concepts:
+
+Ethical dilemma
+	Golden rule, consistency principle, don't tell you what to do
+Need ethical norm
+	1. Utilitarianism
+		Based on result
+		Benefit measurement is subjective, possible injustice	
+	2. Rule-based ethics
+		Based on universal rules
+		Aboslute, independent of consequence, apply to all, not self-defeating, consistent
+		If inconsistent (EX no lie vs no harm), must accept that people can break rules at you
+		EGBC mostly rule-based
+	3. Virtues ethics
+		Find "golden mean" between two extremes of virtue
+		EX honesty in between habitual lying and boasting
+Ethics
+	Framework for studying dilemas using ethical norms
+	Morality = private, ethics = external
+	Decide personal morality vs professional ethics vs legal issue based on scenario
+	Professional ethics #1: public needs beore own
+		Public = people without knowledge
+	Ethical issues are dilemma, unstructured, uncertain, involve emtion
+		
+The EGBC Act and Code of Ethics
+
+Professional Engineering (EGBC)
+	Council + Canadian Engineering Accreditation Board
+	Exams to test experience + technical exp
+	Licensed, get certificated and seal
+	EIT = have degree, no 4 years experience yet
+	Only seal work by self or under direct supervision
+	Licensed = practice, not license = do
+	Company assume liability, else find out
+Using Code of Ethics
+	Principle #1: no harm public
+	Violate principles usually result in principle #1 violation
+
+Davies' Thinking Like an Engineer
+
+II The Possibility of Engineering Ethics
+	Code of ethics = convention between professionals
+	Use for: reduce personal risk, cartel good behaviour
+III Why Obey One's Professional Code
+	Cannot be:
+		1. "Promise", because any engineer can not join profession, and code != law
+		2. "Society", because society use law, and law doesn't enforce
+		Also, law != rational, law != moral
+	Therefore, must be:
+		Code of Ethics are good common sense
+		Hard to follow if called "personal", so defer responsibility
+		If accept one code for benefit, must accept all code to form cartel
+IV Interpreting a Code of Ethics
+	Example: what is "public"?
+	Cannot be:
+		Everyone, because too weak, some high danger can average out with no danger
+		Anyone, because too strong, all projects have risk
+	Therefore, must be:
+		Anyone without informed consent
+V Professional Responsibilities
+	Also have to support code (ex: harrass people who don't follow it):
+		1. Protect public from risks
+		2. Easier to follow code, stronger cartel
+		3. Remove guilt
+		4. Fairness to benefits gained from other engineers following code
+	
