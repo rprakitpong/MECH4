@@ -95,6 +95,21 @@ What to do:
 Thargard moral-psych
 
 1. Introduction
+	Agent has a responsibility to look after broader interests that are neglected  because  of  the  agent’s  own  interests
 	
-
+2. Conflict of Interest
+	Subtle conflicts of interest may distort the judgments of decision makers, sometimes not obvious (ex: bribing) without their awareness of the distortion
+	
+3. Approaches to Moral Psych
+	Approaches in this paper is based on research in affective neuroscience
+	
+5. Application to Conflicts of Interest
+	Why are decisions that involve conflicts of interest so common?
+		Because of pleasant social and professional contacts, the Waterloo executives had come to associate positive somatic markers with the MFP vice president and the deal he was proposing.
+	Why are people so often unaware that they are acting immorally as the result of conflicts of interest?
+		Decision makers who have acquired interests at odds with their official responsibilities have no way of knowing whether their decisions emanate from the biases they have acquired from personal interests instead of from good reasoning that takes their responsibilities into account.
+	No reason to believe that the act of disclosing such interests would influence the unconscious processes of decision-making that allow personal biases to distort reasoning away from professional responsibilities. Indeed, the act of disclosure could even have the opposite effect, of giving the deciders and exaggerated confidence that they are acting morally and are therefore impervious to the effects of conflicts of interest.
+	Gaining biases: The brain does not have the processing and storage capacity to acquire beliefs of no importance, so we tend to focus  belief  acquisition  on  topics  that  matter  to  us. 
+	
+7. Normative Issues
 	
