@@ -1,0 +1,44 @@
+Intro to torts
+
+Definitions:
+	Common law: law by judge
+	Plaintiff: person making claim
+	Defendant: person being sued
+	Damages: award per loss
+Tort
+	Definition: breach of civil duty
+		1. Breach established common law duty
+		2. Intent
+		3. Loss of damage
+	Purpose: restoration and compensation
+		Punitive damages if very bad
+	Burden of proof: "balance of probabilities", >50%
+	List of torts: negligence is common for eng
+	Different from crime:
+		Def: breach of rules by state
+		Purpose: punish and deter
+		Burden of proof: beyond reasonable doubt
+		Not mutually exclusive
+		
+Professional negligence
+
+Requirement of negligence:
+	1. Owe duty of care, "neighbor principle"
+		To client, owner, etc
+		If no direct contract, it's ok if no injury or damage to property
+	2. Breach standard of care, "reasonable person"
+		Be in expertise of location and time
+		Seek advice if inexperienced
+	3. Damages
+Type of negligence: negligent misrepresentation
+	Requirement:
+		Special relationship with listener
+		Untrue, inaccurate, misleading
+		Made statement negligently
+		Listener reasonably rely on statement
+		Damages result
+Protect yourself:
+	Meet standard of care, don't cut corners
+	Reduce risk with contract language, exclusion clause, liability limitation
+	Put disclaimer that report only relied by client
+	Professional liability insurance
