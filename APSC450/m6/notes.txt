@@ -1,0 +1,40 @@
+Employment law
+ 
+Legislation:
+    Federally regulated industries: Canada Labour Code, Canadian Human rights Act
+    Others:
+        BC Employment Standards Act & Regulations
+            Min standards: wage, overtime entitlement, vacation, termination notice, statutory holiday, pregnancy leave
+            Doesn't apply to eng or EIT
+        Occupational Health and Safety Law
+            Right to participate, to know, to refuse unsafe work
+            WorkSafeBC enforce (also do injury compensation)
+        Charter / BC Human Rights Code
+            No discriminate
+        Common law
+            Constructive dismissal
+                Change terms of contract so much that it's effectively a termination
+                Negotiate, then notify employer of objection, then sue
+            Duty to mitigate
+                Seek employment after getting fired to "mitigate damage"
+                Rule of thumb: 2 wks, then send out resumes
+            Non-compete / non-solicitation
+                Non-compete: restrict business from clients of former employment
+                Non-solicitation: restrict talk to client after employment
+                Court decide reasonable enforcing, usually no enforce because court doesn't like to limit trade
+Employee vs Indep Contractor:
+    Employee: min standards, cannot deduct expenses, better for worker
+    Indep Contracter: no min standards, can deduct expenses, better for employer
+    Distinguishing factors:
+        Control
+        Ownership of tools (company's vs own)
+        Chance of loss (salary vs profit)
+        Integration (inside vs outside)
+Termination:
+    From employer: without cause vs with cause
+        Without
+            Get compensate (rule of thumb: 1 mo for 1 yr of service)
+        With
+            Serious misconduct (steal lots, sexual harassment, cruelty, serious safety)
+            No compensate, no notice
+    From employee: reasonable notice (rule of thumb: 2 wks)
