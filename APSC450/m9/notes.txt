@@ -1,0 +1,47 @@
+Class action
+
+Defs:
+	Class Action: claim as class from similiar harm
+	Intentional tort: assault (theat), battery, false imprisonment, nuisance, trespass, nervous shock, economic (fraud), defamation, intrusion
+	Negligence: duty of care exist, breach of duty, damage from breach
+Class action:
+	3 distinct stages:
+		Certification
+			Cause of action
+			Class of 2 or more action
+			Common issue
+			Preferrable for fair + efficient
+			Fair representative of class, no conflict of interest, clear plan to proceed
+		Common Issues Trial
+		Individual assessment process
+Goal:
+	Judicial economy
+		cost < likelihood * goal * class members
+	Access to justice
+	Behavious modification
+	
+Effect of indigenous interests on engineering
+
+Case law:
+	1972 Calder: 		title to land exist before colonization
+	1990 Sparrow: 		harvesting is Aboriginal right
+	1997 Delgamuukw: 	right to land, Crown obligated to consult
+	2004 Haida & Taku: 	consultation requirements
+	2014 Tsilqoht'in: 	determining Aboriginal title and benefits
+Today:
+	Truth and Reconciliation Comission
+		94 "Calls to Action"
+	UN Declaration on the Rights of Indigenous People
+		Free, prior, informed consent
+Engineering:
+	Planning
+		Proj design: consider indigenous land + resource
+		Proj timing: consultation + accomodation take time
+	Costing
+		Consider timing and cost of consultation + accomodation
+	Contracts
+		Grant some rights as component of accomodation
+	Business dev
+		May adopt TRC Calls to Action
+	Professional accreditation
+		Continued professional dev credit on indigenous rights
