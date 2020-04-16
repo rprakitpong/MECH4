@@ -1,0 +1,56 @@
+Working abroad
+
+Context
+	World's 3rd largest engineering service exporter
+	Engineers Canada try to export more
+Mutual recognition
+	Sign with HK, Ireland, Aus
+	With ABET (US)
+	CTI (France)
+	APEC
+	1989 Washington Accord
+Reasons to work abroad
+	Special skills
+	Language
+	Job availability, money
+	Self development, experience, traval, personal reasons
+Problems
+	Culture shock
+	Language
+	Prejudice
+	Local laws
+	Health care, food, school, family
+	Exposure to poverty
+Why companies go abroad
+	Market access
+	Unique resources (service, expertise, labor, natural, subsidies)
+	Weaker env and safety regulations
+Corruption lol
+	Canadian CFPOA Act offences
+		Bribing
+		Laundering
+		Possesion from illegal means
+Environmental ethics
+	Bio-centric ethics:			all life have intrinsic value
+	Eco-centric ethics:			ecological community
+	Industrial ecology:			lessen env impact of industrial systems
+	Sustainable dev: 			social, econ, env impacts; must not compromise future gens
+	Precautionary principle:	burden of proof that it's not harmful is on action taker
+	
+Forensic engineering
+
+Def: examine event that alr happen, assist legal
+	Think+listen like lawyer, solve problem like eng
+Court room
+	Lay facts
+	Expert witness (opinion)
+		Say qualifications
+		Civil rule 11-2: Must not advocate
+	Need expert witness because:
+		Ideal: clear evidence, scientific principles
+		Real: poor evidence, empirical data, assumptions, witness observation
+Use subjective data (witness) to validate objective data (evidence)
+	Field work: measurements, photographs, data download (CDR)
+	Analysis
+		Can change if assumption is wrong
+	Report

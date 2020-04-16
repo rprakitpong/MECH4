@@ -1,0 +1,69 @@
+What is 'failure' in managing innovation
+
+Failure to align innovation with business/strategy
+Failure to manage innovation process (increase success to risk ratio)
+Failure to learn from underperforming innovation
+
+3 case studies in innovation failure
+
+Titanium dioxide
+	Rust as by product
+	Didn't innovate, but incrementally reduce rust
+	Not fast enough, business struggle
+Business campaign
+	Internal online suggestion box
+	Too many ideas, not enough ways to process ideas
+	Ideas need develop + scale-up
+Management failure
+	Happen on delayed + over-budget projs
+	People get fired/blamed before they can learn and innovate
+	
+Innovating for success
+
+Process:
+	Generation
+		In house, cross department, external
+	Conversion
+		Selection, development
+	Implementation and diffusion
+Key question and key performance evaluation
+Conversion is hardest
+
+4 windows for innovation
+	1. Bridging: 	planning and designing
+	2. Engaging: 	collaborate between contactors
+	3. Leveraging: 	during work
+	4. Exchanging:	lessons learned
+
+Innovation in megaproject
+
+Many partners, need careful coordination
+Problem solving, innovation, relationships
+Ichthys Gas: Can't get welder, so automate
+Heathrow airport: Heathrow Terminal 5 agreement
+	Collaborate, not compete for lowest bid
+	Share risk, not offload to contractor
+	
+	
+Claudio Arato on Innovation and Risk
+	Value of engineer: merge non-tech to tech
+		Issues often driven by business
+		Find balance
+		Use knowledge to see opportunities
+	Fundamentals of innovation
+		Critical thinking
+		Identify social demand
+		Communication
+		Creativity
+	See trap vs truth
+		See through narrative, future trends
+		Beware "disruptive"
+	Success = (purpose, team, plan, money, timing/luck) * intensity
+	Ask yourself:
+		Why and what you do
+		Problems match capabilities + culture
+		Need for innovation
+		Culture of business + industry
+		Where ideas come from
+		Time for staff to learn
+		Objectives enhanced by team
