@@ -16,7 +16,10 @@ namespace _4
     public partial class Form1 : Form
     {
         private SerialPort serialPort = null;
-        ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();   
+        private ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
+        private int currData = 0; // 1 = Ax, 2 = Ay, 3 = Az
+        private StringBuilder outputFile = new StringBuilder(); // slow to open and close
+
         public Form1()
         {
             InitializeComponent();
@@ -95,7 +98,27 @@ namespace _4
             while (dataQueue.TryDequeue(out res))
             {
                 newData.Append(res.ToString());
-                newData.Append(",");
+                newData.Append(", ");
+
+                if (res == 255)
+                {
+                    currData = 1;
+                } else
+                {
+                    switch (currData)
+                    {
+                        case 1:
+                            axBox.Text = res.ToString();
+                            break;
+                        case 2:
+                            ayBox.Text = res.ToString();
+                            break;
+                        case 3:
+                            azBox.Text = res.ToString();
+                            break;
+                    }
+                    currData = currData + 1;
+                }
             }
             displayBox.AppendText(newData.ToString());
         }
