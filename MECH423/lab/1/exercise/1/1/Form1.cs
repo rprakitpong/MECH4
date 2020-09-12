@@ -16,19 +16,19 @@ namespace _1
         {
             InitializeComponent();
 
-            mouseBox.MouseMove += UpdateXYCoord;
-            mouseBox.MouseClick += UpdateClickCoord;
+            mouseBox.MouseMove += UpdateXYCoord; // add XY display updater as event handler
+            mouseBox.MouseClick += UpdateClickCoord; // add click display updater as event handler
         }
 
         private void UpdateXYCoord(object sender, MouseEventArgs e)
         {
-            xCoord.Text = e.X.ToString();
-            yCoord.Text = e.Y.ToString();
+            xCoord.Text = e.X.ToString(); // update X display
+            yCoord.Text = e.Y.ToString(); // update Y display
         }
 
         private void UpdateClickCoord(object sender, MouseEventArgs e)
         {
-            clickCoord.Text += "(" + e.X.ToString() + "," + e.Y.ToString() + ")" + Environment.NewLine;
+            clickCoord.Text += "(" + e.X.ToString() + "," + e.Y.ToString() + ")" + Environment.NewLine; // append new line to list of click coordinates
         }
     }
 }
