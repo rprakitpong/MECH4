@@ -55,6 +55,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.stateBox = new System.Windows.Forms.TextBox();
+            this.axChart = new LiveCharts.WinForms.CartesianChart();
+            this.ayChart = new LiveCharts.WinForms.CartesianChart();
+            this.azChart = new LiveCharts.WinForms.CartesianChart();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -281,11 +284,38 @@
             this.stateBox.Size = new System.Drawing.Size(100, 22);
             this.stateBox.TabIndex = 30;
             // 
+            // axChart
+            // 
+            this.axChart.Location = new System.Drawing.Point(17, 208);
+            this.axChart.Name = "axChart";
+            this.axChart.Size = new System.Drawing.Size(554, 100);
+            this.axChart.TabIndex = 31;
+            this.axChart.Text = "axChart";
+            // 
+            // ayChart
+            // 
+            this.ayChart.Location = new System.Drawing.Point(22, 335);
+            this.ayChart.Name = "ayChart";
+            this.ayChart.Size = new System.Drawing.Size(549, 100);
+            this.ayChart.TabIndex = 32;
+            this.ayChart.Text = "ayChart";
+            // 
+            // azChart
+            // 
+            this.azChart.Location = new System.Drawing.Point(17, 490);
+            this.azChart.Name = "azChart";
+            this.azChart.Size = new System.Drawing.Size(554, 100);
+            this.azChart.TabIndex = 33;
+            this.azChart.Text = "azChart";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 201);
+            this.ClientSize = new System.Drawing.Size(599, 613);
+            this.Controls.Add(this.azChart);
+            this.Controls.Add(this.ayChart);
+            this.Controls.Add(this.axChart);
             this.Controls.Add(this.stateBox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label4);
@@ -349,6 +379,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox stateBox;
+        private LiveCharts.WinForms.CartesianChart axChart;
+        private LiveCharts.WinForms.CartesianChart ayChart;
+        private LiveCharts.WinForms.CartesianChart azChart;
     }
 }
 

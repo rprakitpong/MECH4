@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Configurations;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +26,10 @@ namespace _4
         private Queue<int> ay_100points = new Queue<int>();
         private Queue<int> az_100points = new Queue<int>();
 
+        public ChartValues<MeasureModel> axChartValues { get; set; }
+        public ChartValues<MeasureModel> ayChartValues { get; set; }
+        public ChartValues<MeasureModel> azChartValues { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -40,6 +47,128 @@ namespace _4
             disconnectBtn.Visible = false; // turn disconnect button off since there's nothing to disconnect now
 
             stateBox.Text = state0;
+
+
+            SetUpCharts();
+
+        }
+
+        private void SetUpCharts()
+        {
+            // chart stuff
+            var mapper = Mappers.Xy<MeasureModel>()
+                .X(model => model.DateTime.Ticks)   //use DateTime.Ticks as X
+                .Y(model => model.Value);           //use the value property as Y
+
+            //lets save the mapper globally.
+            Charting.For<MeasureModel>(mapper);
+
+            //the ChartValues property will store our values array
+            axChartValues = new ChartValues<MeasureModel>();
+            axChart.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = axChartValues,
+                    PointGeometrySize = 18,
+                    StrokeThickness = 4
+                }
+            };
+            axChart.AxisX.Add(new Axis
+            {
+                DisableAnimations = true,
+                LabelFormatter = value => new System.DateTime((long)value).ToString("mm:ss"),
+                Separator = new Separator
+                {
+                    Step = TimeSpan.FromSeconds(1).Ticks
+                }
+            });
+
+            SetAxisLimits("x");
+
+            //-------------------------
+
+            //the ChartValues property will store our values array
+            ayChartValues = new ChartValues<MeasureModel>();
+            ayChart.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = ayChartValues,
+                    PointGeometrySize = 18,
+                    StrokeThickness = 4
+                }
+            };
+            ayChart.AxisX.Add(new Axis
+            {
+                DisableAnimations = true,
+                LabelFormatter = value => new System.DateTime((long)value).ToString("mm:ss"),
+                Separator = new Separator
+                {
+                    Step = TimeSpan.FromSeconds(1).Ticks
+                }
+            });
+
+            SetAxisLimits("y");
+
+            //---------------------------
+
+            //the ChartValues property will store our values array
+            azChartValues = new ChartValues<MeasureModel>();
+            azChart.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = azChartValues,
+                    PointGeometrySize = 18,
+                    StrokeThickness = 4
+                }
+            };
+            azChart.AxisX.Add(new Axis
+            {
+                DisableAnimations = true,
+                LabelFormatter = value => new System.DateTime((long)value).ToString("mm:ss"),
+                Separator = new Separator
+                {
+                    Step = TimeSpan.FromSeconds(1).Ticks
+                }
+            });
+
+            SetAxisLimits("z");
+        }
+
+        //chart stuff
+        private void SetAxisLimits(string s)
+        {
+            System.DateTime now = System.DateTime.Now;
+
+            LiveCharts.WinForms.CartesianChart c = axChart;
+            if (s == "y")
+            {
+                c = ayChart;
+            } else if (s == "z")
+            {
+                c = azChart;
+            }
+
+            c.AxisX[0].MaxValue = now.Ticks + TimeSpan.FromSeconds(0).Ticks; // lets force the axis to be 100ms ahead
+            c.AxisX[0].MinValue = now.Ticks - TimeSpan.FromSeconds(2).Ticks; //we only care about the last 8 seconds
+        }
+
+        private void AddChartValue(ChartValues<MeasureModel> cv, double val, string axis)
+        {
+            var now = System.DateTime.Now;
+
+            cv.Add(new MeasureModel
+            {
+                DateTime = now,
+                Value = val
+            });
+
+            SetAxisLimits(axis);
+
+            //lets only use the last 30 values
+            if (cv.Count > 30) cv.RemoveAt(0);
         }
 
         private void CloseSerial(object sender, FormClosingEventArgs e)
@@ -113,16 +242,19 @@ namespace _4
                             axBox.Text = res.ToString();
                             axBox.Tag = res; // save int as tag to excapsulate work of keeping track of ax into axBox object, no separate variable for this
                             SetAverage(res, ax_100points, axAvgBox);
+                            AddChartValue(axChartValues, res, "x");
                             break;
                         case 2:
                             ayBox.Text = res.ToString();
                             ayBox.Tag = res;
                             SetAverage(res, ay_100points, ayAvgBox);
+                            AddChartValue(ayChartValues, res, "y");
                             break;
                         case 3:
                             azBox.Text = res.ToString();
                             azBox.Tag = res;
                             SetAverage(res, az_100points, azAvgBox);
+                            AddChartValue(azChartValues, res, "z");
                             break;
                     }
                     currData = currData + 1;
@@ -213,6 +345,8 @@ namespace _4
         bool ay_thresholdCrossed = false;
         bool az_thresholdCrossed = false;
 
+
+        private DateTime lastStateChangeTime = DateTime.Now;
         private string GetNewState(int ax, int ay, int az, string curState)
         {
             bool axSwitch = ax < ax_threshold && ax_thresholdCrossed; // check if value has come down from crossing threshold
@@ -222,66 +356,87 @@ namespace _4
             ay_thresholdCrossed = ay >= ay_threshold;
             az_thresholdCrossed = az >= az_threshold;
 
+            Console.WriteLine((DateTime.Now - lastStateChangeTime).TotalSeconds.ToString());
+            bool someTimeGap = (DateTime.Now - lastStateChangeTime).TotalSeconds > 1;
+
+            string newState = curState;
             switch (curState)
             {
                 case state0:
                     if (axSwitch)
                     {
-                        return state1;
+                        newState = state1;
                     }
                     else if (azSwitch)
                     {
-                        return state4;
+                        newState = state4;
                     }
                     else if (aySwitch)
                     {
-                        return state0;
+                        newState = state0;
                     }
                     break;
                 case state1:
                     if (aySwitch)
                     {
-                        return state2;
+                        newState = state2;
                     }
                     else if (axSwitch || azSwitch)
                     {
-                        return state0;
+                        newState = state0;
                     }
                     break;
                 case state2:
                     if (azSwitch)
                     {
-                        return state3;
+                        newState = state3;
                     }
                     else if (axSwitch || aySwitch)
                     {
-                        return state0;
+                        newState = state0;
                     }
                     break;
                 case state3:
                     if (axSwitch || aySwitch || azSwitch)
                     {
-                        return state0;
+                        newState = state0;
                     }
                     break;
                 case state4:
                     if (axSwitch)
                     {
-                        return state5;
+                        newState = state5;
                     }
                     else if (aySwitch || azSwitch)
                     {
-                        return state0;
+                        newState = state0;
                     }
                     break;
                 case state5:
                     if (axSwitch || aySwitch || azSwitch)
                     {
-                        return state0;
+                        newState = state0;
                     }
                     break;
             }
-            return curState; // no change detected, return current state
+
+            
+            if (someTimeGap && newState != curState)
+            {
+                lastStateChangeTime = DateTime.Now;
+                return newState;
+            } else
+            {
+                return curState; // no change detected OR not enough time elapsed since last changed
+            }
+            
         }
     }
+
+    public class MeasureModel
+    {
+        public System.DateTime DateTime { get; set; }
+        public double Value { get; set; }
+    }
+
 }
