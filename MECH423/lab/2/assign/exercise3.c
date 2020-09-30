@@ -26,9 +26,10 @@ int exercise3(void)
   P4IE = BIT0;                              // P4.0 interrupt enabled
   P4IFG = 0;                                // P4 IFG cleared
 
+  __bis_SR_register(LPM4_bits + GIE);       // Enter LPM4 w/interrupt
+
   while(1) {
-    __bis_SR_register(LPM4_bits + GIE);     // Enter LPM4 w/interrupt
-    __no_operation();                       // For debugger
+    __no_operation();
   }
 }
 

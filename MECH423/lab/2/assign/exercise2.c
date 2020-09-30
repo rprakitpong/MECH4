@@ -15,7 +15,8 @@ int exercise2(void)
   WDTCTL = WDTPW + WDTHOLD;                 // Stop WDT
   CSCTL0_H = 0xA5;                          // unlock registers
   CSCTL2 |= SELS0 + SELS1;                  // Explicitly set SMCLK on DCO (should already be on DCO by default)
-  CSCTL1 |= DCOFSEL0 + DCOFSEL1;            // Set max. DCO setting =8MHz
+  CSCTL1 |= DCORSEL;
+  CSCTL1 |= DCOFSEL0 + DCOFSEL1;            // Set DCO = 8MHz
   CSCTL3 |= DIVS0 + DIVS2;                  // Explicitly set SMCLK divider to 32 (should already be 32 by default)
 
   PJDIR |= PJ_ALLON;                        // Set to output
