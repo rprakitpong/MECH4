@@ -30,6 +30,7 @@ namespace _4
             System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
             t.Interval = 50;
             t.Tick += updateDisplayedData; // set up display update
+            t.Tick += serialDataHandler;
             t.Start();
 
             disconnectBtn.Enabled = false; // turn off since there's nothing to disconnect now
@@ -46,10 +47,11 @@ namespace _4
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string portName = comboBox1.SelectedItem.ToString();
+            int baud = int.Parse(baudrateBox.Text);
 
             if (serialPort == null) // set up new serial connection
             {
-                serialPort = new SerialPort(portName, 57600, Parity.None, 8, StopBits.One);
+                serialPort = new SerialPort(portName, baud, Parity.None, 8, StopBits.One);
                 while (!serialPort.IsOpen)
                 {
                     serialPort.Open();
@@ -63,20 +65,21 @@ namespace _4
             }
         }
 
-        private void serialDataHandler(object sender, SerialDataReceivedEventArgs e)
+        private void serialDataHandler(object sender, EventArgs e)
         {
-            Console.WriteLine("read");
 
-            int newByte = 0;
-            int bytesToRead;
-            bytesToRead = serialPort.BytesToRead;
-            while (bytesToRead != 0)
+            if (serialPort != null)
             {
-                newByte = serialPort.ReadByte();
-                dataQueue.Enqueue(newByte);       
+                int newByte = 0;
+                int bytesToRead;
                 bytesToRead = serialPort.BytesToRead;
+                while (bytesToRead != 0)
+                {
+                    newByte = serialPort.ReadByte();
+                    dataQueue.Enqueue(newByte);
+                    bytesToRead = serialPort.BytesToRead;
+                }
             }
-            serialPort.DiscardInBuffer(); // discard what's already read
         }
 
         public void updateDisplayedData(Object myObject, EventArgs myEventArgs)
@@ -107,6 +110,14 @@ namespace _4
         {
             serialPort.DiscardInBuffer(); // remove stuff 
             serialPort.DataReceived += new SerialDataReceivedEventHandler(serialDataHandler); // start handling data
+        }
+
+        private void sendBtn_Click(object sender, EventArgs e)
+        {
+            if (serialPort != null)
+            {
+                serialPort.Write(byteToWriteBox.Text);
+            }
         }
     }
 }
