@@ -33,8 +33,10 @@ int exercise4(void) {
 
     // Configure UCA0
     UCA0CTLW0 = UCSSEL0;
-    UCA0BRW = 52;
-    UCA0MCTLW = 0x4900 + UCOS16 + UCBRF0;
+    UCA0BRW = 8;                              // Table 18-5
+    UCA0MCTLW |= 0xF700;
+    UCA0MCTLW |= UCOS16;
+    UCA0MCTLW |= UCBRF1 + UCBRF3;
     UCA0IE |= UCRXIE;
 
     // global interrupt enable
