@@ -243,7 +243,7 @@ void LEDSequence(unsigned int DiffValue)
     if ((DiffValue > currLED * inc + init) && (currLED < 7))
     {
         temp = 1 + currLED;
-        if (currLED > 3)
+        if (temp > 3)
         {
             P3OUT |= LED[temp];
         }
