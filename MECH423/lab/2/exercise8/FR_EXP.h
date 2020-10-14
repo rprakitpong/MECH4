@@ -91,7 +91,7 @@ extern void SetupAccel(void); // setup ADC for Acc
 extern void ShutDownAccel(void);
 extern void SetupThermistor(void);
 extern void ShutDownTherm(void);
-extern void LEDSequence(unsigned int, unsigned char);
+extern void LEDSequence(unsigned int);
 extern void LEDSequenceWrite(unsigned char);
 extern void DisableSwitches(void);
 extern void EnableSwitches(void);
