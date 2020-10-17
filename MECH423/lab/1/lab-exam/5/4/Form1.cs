@@ -22,9 +22,11 @@ namespace _4
         private ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
         private int currData = 0; // 1 = Ax, 2 = Ay, 3 = Az
 
-        private Queue<int> ax_100points = new Queue<int>();
-        private Queue<int> ay_100points = new Queue<int>();
-        private Queue<int> az_100points = new Queue<int>();
+        private Queue<int> ax_500points = new Queue<int>();
+        private Queue<int> ay_500points = new Queue<int>();
+        private Queue<int> az_500points = new Queue<int>();
+
+        private Queue<double> avgG_20points = new Queue<double>();
 
         public ChartValues<MeasureModel> axChartValues { get; set; }
         public ChartValues<MeasureModel> ayChartValues { get; set; }
@@ -234,6 +236,8 @@ namespace _4
                     string state = GetNewState((Int32)axBox.Tag, (Int32)ayBox.Tag, (Int32)azBox.Tag, curState);
                     stateBox.Text = state;
 
+                    SetAvgG((Int32)axBox.Tag, (Int32)ayBox.Tag, (Int32)azBox.Tag);
+
                 } else
                 {
                     switch (currData)
@@ -241,19 +245,19 @@ namespace _4
                         case 1:
                             axBox.Text = res.ToString();
                             axBox.Tag = res; // save int as tag to excapsulate work of keeping track of ax into axBox object, no separate variable for this
-                            SetAverage(res, ax_100points, axAvgBox);
+                            SetMax(res, ax_500points, axMaxBox);
                             AddChartValue(axChartValues, res, "x");
                             break;
                         case 2:
                             ayBox.Text = res.ToString();
                             ayBox.Tag = res;
-                            SetAverage(res, ay_100points, ayAvgBox);
+                            SetMax(res, ay_500points, ayMaxBox);
                             AddChartValue(ayChartValues, res, "y");
                             break;
                         case 3:
                             azBox.Text = res.ToString();
                             azBox.Tag = res;
-                            SetAverage(res, az_100points, azAvgBox);
+                            SetMax(res, az_500points, azMaxBox);
                             AddChartValue(azChartValues, res, "z");
                             break;
                     }
@@ -262,26 +266,58 @@ namespace _4
             }
         }
 
-        private void SetAverage(int res, Queue<int> points, TextBox AvgBox)
+        private void SetAvgG(int x, int y, int z)
+        {
+            double g = XYZToG(x, y, z);
+            avgG_20points.Enqueue(g);
+            while (avgG_20points.Count > 20)
+            {
+                avgG_20points.Dequeue();
+            }
+
+            if (avgG_20points.Count == 20)
+            {
+                double avg = avgG_20points.Average();
+                avgG20Box.Text = avg.ToString();
+            } else if (avgG_20points.Count < 20) {
+                avgG20Box.Text = "num of points: " + avgG_20points.Count.ToString();
+            } else
+            {
+                avgG20Box.Text = "Error";
+            }
+        }
+
+        private double XYZToG(int x, int y, int z)
+        {
+            return Math.Sqrt(Math.Pow(DataPointToG(x), 2) + Math.Pow(DataPointToG(y), 2) + Math.Pow(DataPointToG(z), 2)); // pythagorean
+        }
+
+        private void SetMax(int res, Queue<int> points, TextBox MaxBox)
         {
             points.Enqueue(res);
-            while (points.Count > 100)
+            while (points.Count > 500)
             {
                 points.Dequeue();
             }
 
-            if (points.Count == 100) 
+            if (!(points.Count > 500)) 
             {
-                double avg = Queryable.Average(points.AsQueryable());
-                AvgBox.Text = avg.ToString();
-            } else if (points.Count < 100)
-            {
-                AvgBox.Text = "Points count: " + points.Count.ToString();
+                double max = DataPointToG(points.ToList().Min()); // min serial data produce max g
+                MaxBox.Text = max.ToString();
             } else
             {
                 // shouldn't ever reach here
-                AvgBox.Text = "Error";
+                MaxBox.Text = "Error";
             }
+        }
+
+        private double DataPointToG(int v)
+        {
+            double m = -0.03703703703;
+            double b = 4.7037; // 0g and -1g experimentally determined to be 127 and 154, so if we solve for linear equation, we get m=-1/27 and b=127/27
+            double x = (double) v;
+            Console.WriteLine(m.ToString() + "," + b + "," + x);
+            return m * x + b;            
         }
 
         private string GetOrientation(int ax, int ay, int az)
@@ -331,30 +367,30 @@ namespace _4
         }
 
         int ax_threshold = 170; // got these thresholds by reviewing data
-        int ay_threshold = 170;
-        int az_threshold = 190;
+        int az_threshold_max = 190;
+        int az_threshold_min = 110; // min threshold
 
         const string state0 = "0 initial";
-        const string state1 = "1 simple punch";
-        const string state2 = "2";
-        const string state3 = "3 right hook";
+        const string state1 = "1 duck";
+        const string state2 = "2 grave digger";
+        const string state3 = "3";
         const string state4 = "4";
-        const string state5 = "5 high punch";
+        const string state5 = "5 slam dunk";
 
         bool ax_thresholdCrossed = false;
-        bool ay_thresholdCrossed = false;
-        bool az_thresholdCrossed = false;
+        bool az_thresholdCrossed_max = false;
+        bool az_thresholdCrossed_min = false;
 
 
         private DateTime lastStateChangeTime = DateTime.Now;
         private string GetNewState(int ax, int ay, int az, string curState)
         {
             bool axSwitch = ax < ax_threshold && ax_thresholdCrossed; // check if value has come down from crossing threshold
-            bool aySwitch = ay < ay_threshold && ay_thresholdCrossed;
-            bool azSwitch = az < az_threshold && az_thresholdCrossed;
+            bool azSwitch_max = az < az_threshold_max && az_thresholdCrossed_max;
+            bool azSwitch_min = az > az_threshold_min && az_thresholdCrossed_min;
             ax_thresholdCrossed = ax >= ax_threshold;
-            ay_thresholdCrossed = ay >= ay_threshold;
-            az_thresholdCrossed = az >= az_threshold;
+            az_thresholdCrossed_max = az >= az_threshold_max;
+            az_thresholdCrossed_min = az <= az_threshold_min;
 
             Console.WriteLine((DateTime.Now - lastStateChangeTime).TotalSeconds.ToString());
             bool someTimeGap = (DateTime.Now - lastStateChangeTime).TotalSeconds > 1;
@@ -363,57 +399,55 @@ namespace _4
             switch (curState)
             {
                 case state0:
-                    if (axSwitch)
+                    if (azSwitch_min)
                     {
                         newState = state1;
                     }
-                    else if (azSwitch)
+                    else if (azSwitch_max)
                     {
-                        newState = state4;
-                    }
-                    else if (aySwitch)
-                    {
-                        newState = state0;
+                        newState = state3;
                     }
                     break;
                 case state1:
-                    if (aySwitch)
+                    if (axSwitch)
                     {
                         newState = state2;
                     }
-                    else if (axSwitch || azSwitch)
+                    else if (azSwitch_max || azSwitch_min)
                     {
                         newState = state0;
                     }
                     break;
                 case state2:
-                    if (azSwitch)
-                    {
-                        newState = state3;
-                    }
-                    else if (axSwitch || aySwitch)
+                    if (axSwitch || azSwitch_max || azSwitch_min)
                     {
                         newState = state0;
                     }
                     break;
                 case state3:
-                    if (axSwitch || aySwitch || azSwitch)
+                    if (axSwitch)
+                    {
+                        newState = state4;
+                    } else if (azSwitch_max || azSwitch_min)
                     {
                         newState = state0;
                     }
                     break;
                 case state4:
-                    if (axSwitch)
+                    if (azSwitch_min)
                     {
                         newState = state5;
                     }
-                    else if (aySwitch || azSwitch)
+                    else if (axSwitch || azSwitch_max)
                     {
                         newState = state0;
                     }
                     break;
                 case state5:
-                    if (axSwitch || aySwitch || azSwitch)
+                    if (axSwitch)
+                    {
+                        newState = state2;
+                    } else if (azSwitch_max || azSwitch_min)
                     {
                         newState = state0;
                     }

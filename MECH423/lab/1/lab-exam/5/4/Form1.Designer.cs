@@ -46,10 +46,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.axAvgBox = new System.Windows.Forms.TextBox();
-            this.azAvgBox = new System.Windows.Forms.TextBox();
+            this.axMaxBox = new System.Windows.Forms.TextBox();
+            this.azMaxBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.ayAvgBox = new System.Windows.Forms.TextBox();
+            this.ayMaxBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,6 +58,9 @@
             this.axChart = new LiveCharts.WinForms.CartesianChart();
             this.ayChart = new LiveCharts.WinForms.CartesianChart();
             this.azChart = new LiveCharts.WinForms.CartesianChart();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.avgG20Box = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -207,48 +210,48 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(49, 106);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 17);
+            this.label11.Size = new System.Drawing.Size(56, 17);
             this.label11.TabIndex = 21;
-            this.label11.Text = "Ax_avg";
+            this.label11.Text = "Ax_max";
             // 
-            // axAvgBox
+            // axMaxBox
             // 
-            this.axAvgBox.Location = new System.Drawing.Point(109, 103);
-            this.axAvgBox.Name = "axAvgBox";
-            this.axAvgBox.Size = new System.Drawing.Size(100, 22);
-            this.axAvgBox.TabIndex = 22;
+            this.axMaxBox.Location = new System.Drawing.Point(109, 103);
+            this.axMaxBox.Name = "axMaxBox";
+            this.axMaxBox.Size = new System.Drawing.Size(100, 22);
+            this.axMaxBox.TabIndex = 22;
             // 
-            // azAvgBox
+            // azMaxBox
             // 
-            this.azAvgBox.Location = new System.Drawing.Point(471, 103);
-            this.azAvgBox.Name = "azAvgBox";
-            this.azAvgBox.Size = new System.Drawing.Size(100, 22);
-            this.azAvgBox.TabIndex = 24;
+            this.azMaxBox.Location = new System.Drawing.Point(471, 103);
+            this.azMaxBox.Name = "azMaxBox";
+            this.azMaxBox.Size = new System.Drawing.Size(100, 22);
+            this.azMaxBox.TabIndex = 24;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(411, 106);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(55, 17);
+            this.label12.Size = new System.Drawing.Size(57, 17);
             this.label12.TabIndex = 23;
-            this.label12.Text = "Az_avg";
+            this.label12.Text = "Az_max";
             // 
-            // ayAvgBox
+            // ayMaxBox
             // 
-            this.ayAvgBox.Location = new System.Drawing.Point(289, 103);
-            this.ayAvgBox.Name = "ayAvgBox";
-            this.ayAvgBox.Size = new System.Drawing.Size(100, 22);
-            this.ayAvgBox.TabIndex = 26;
+            this.ayMaxBox.Location = new System.Drawing.Point(289, 103);
+            this.ayMaxBox.Name = "ayMaxBox";
+            this.ayMaxBox.Size = new System.Drawing.Size(100, 22);
+            this.ayMaxBox.TabIndex = 26;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(229, 106);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 17);
+            this.label13.Size = new System.Drawing.Size(57, 17);
             this.label13.TabIndex = 25;
-            this.label13.Text = "Ay_avg";
+            this.label13.Text = "Ay_max";
             // 
             // label17
             // 
@@ -262,16 +265,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 168);
+            this.label4.Location = new System.Drawing.Point(13, 196);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 17);
             this.label4.TabIndex = 28;
-            this.label4.Text = "5,6,7)";
+            this.label4.Text = "6,7,8)";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(70, 168);
+            this.label14.Location = new System.Drawing.Point(64, 196);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(41, 17);
             this.label14.TabIndex = 29;
@@ -279,14 +282,14 @@
             // 
             // stateBox
             // 
-            this.stateBox.Location = new System.Drawing.Point(117, 165);
+            this.stateBox.Location = new System.Drawing.Point(111, 193);
             this.stateBox.Name = "stateBox";
             this.stateBox.Size = new System.Drawing.Size(100, 22);
             this.stateBox.TabIndex = 30;
             // 
             // axChart
             // 
-            this.axChart.Location = new System.Drawing.Point(17, 208);
+            this.axChart.Location = new System.Drawing.Point(13, 266);
             this.axChart.Name = "axChart";
             this.axChart.Size = new System.Drawing.Size(554, 100);
             this.axChart.TabIndex = 31;
@@ -294,7 +297,7 @@
             // 
             // ayChart
             // 
-            this.ayChart.Location = new System.Drawing.Point(22, 335);
+            this.ayChart.Location = new System.Drawing.Point(12, 381);
             this.ayChart.Name = "ayChart";
             this.ayChart.Size = new System.Drawing.Size(549, 100);
             this.ayChart.TabIndex = 32;
@@ -302,17 +305,45 @@
             // 
             // azChart
             // 
-            this.azChart.Location = new System.Drawing.Point(17, 490);
+            this.azChart.Location = new System.Drawing.Point(13, 501);
             this.azChart.Name = "azChart";
             this.azChart.Size = new System.Drawing.Size(554, 100);
             this.azChart.TabIndex = 33;
             this.azChart.Text = "azChart";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(19, 167);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(21, 17);
+            this.label15.TabIndex = 34;
+            this.label15.Text = "5)";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(49, 167);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(80, 17);
+            this.label16.TabIndex = 35;
+            this.label16.Text = "avgMax_20";
+            // 
+            // avgMax20Box
+            // 
+            this.avgG20Box.Location = new System.Drawing.Point(133, 165);
+            this.avgG20Box.Name = "avgMax20Box";
+            this.avgG20Box.Size = new System.Drawing.Size(234, 22);
+            this.avgG20Box.TabIndex = 36;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 613);
+            this.Controls.Add(this.avgG20Box);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.azChart);
             this.Controls.Add(this.ayChart);
             this.Controls.Add(this.axChart);
@@ -320,11 +351,11 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.ayAvgBox);
+            this.Controls.Add(this.ayMaxBox);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.azAvgBox);
+            this.Controls.Add(this.azMaxBox);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.axAvgBox);
+            this.Controls.Add(this.axMaxBox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -370,10 +401,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox axAvgBox;
-        private System.Windows.Forms.TextBox azAvgBox;
+        private System.Windows.Forms.TextBox axMaxBox;
+        private System.Windows.Forms.TextBox azMaxBox;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox ayAvgBox;
+        private System.Windows.Forms.TextBox ayMaxBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label4;
@@ -382,6 +413,9 @@
         private LiveCharts.WinForms.CartesianChart axChart;
         private LiveCharts.WinForms.CartesianChart ayChart;
         private LiveCharts.WinForms.CartesianChart azChart;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox avgG20Box;
     }
 }
 

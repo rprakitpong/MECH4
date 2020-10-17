@@ -30,6 +30,7 @@ extern int exercise2(void);
 extern int exercise3(void);
 extern int exercise4(void);
 extern int exercise5(void);
+extern int exercise6(void);
 
 
 #endif /* EXERCISE_H_ */

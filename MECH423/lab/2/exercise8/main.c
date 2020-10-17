@@ -73,8 +73,8 @@ unsigned int GetRoomTempValue(void)
 
 void LEDSequence(unsigned int DiffValue)
 {
-    int init = 15;                              // initial hurdle that reading has to be above for 2nd LED to light up, reduce noise
-    int inc = 2;                                // increment per each new LED to light up
+    int init = 0;                              // initial hurdle that reading has to be above for 2nd LED to light up, reduce noise
+    int inc = 1;                                // increment per each new LED to light up
     int LED[8] = { BIT0, BIT1, BIT2, BIT3, BIT4, BIT5, BIT6, BIT7 };
     int temp = currLED;
 
@@ -127,9 +127,9 @@ void main(void)
         __no_operation();
 
         // LED stuff
-        if (ADCResult >= RoomTempValue)                     // doesn't do anything with LED if it gets colder
+        if (ADCResult <= RoomTempValue)                     // doesn't do anything with LED if it gets colder
         {
-            LEDSequence(ADCResult - RoomTempValue);         // send over the difference
+            LEDSequence(RoomTempValue - ADCResult);         // send over the difference
         }
 
         while (!(UCA0IFG & UCTXIFG));                       // wait for buffer to be ready
@@ -140,7 +140,7 @@ void main(void)
 #pragma vector=ADC10_VECTOR
 __interrupt void ADC10_ISR(void)
 {
-    ADCResult = ADC10MEM0;
+    ADCResult = ADC10MEM0 >> 2;
     __bic_SR_register_on_exit(CPUOFF);
 }
 

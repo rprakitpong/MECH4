@@ -36,3 +36,4 @@ __interrupt void Timer_A(void)
   P3OUT ^= BIT4;                            // Toggle output
   TA0CTL &= ~TAIFG;                         // Clear IFG
 }
+

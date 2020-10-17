@@ -34,6 +34,7 @@ int exercise5(void)
       return 0;
     }
 int counter = 0;
+
     #pragma vector=TIMER0_B0_VECTOR
     __interrupt void Timer_B_0(void)
     {
@@ -61,3 +62,4 @@ int counter = 0;
 
       TB0CTL &= ~TBIFG;                         // Clear IFG
     }
+

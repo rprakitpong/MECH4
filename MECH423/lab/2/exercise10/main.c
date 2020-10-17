@@ -130,7 +130,7 @@ int main(void)
     P3SEL0 |= BIT4 + BIT5;
 
     // Set Timer B PWMs, one at 100% and one at 25%
-    TB1CCR0 = 2000 - 1;
+    TB1CCR0 = 2000;
     TB1CCTL1 = OUTMOD_7;
     TB1CCR1 = 1000;
     TB1CCTL2 = OUTMOD_7;

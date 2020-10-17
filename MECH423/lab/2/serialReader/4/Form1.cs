@@ -82,13 +82,25 @@ namespace _4
             }
         }
 
+        int state = 0;
+
         public void updateDisplayedData(Object myObject, EventArgs myEventArgs)
         {
             //Console.WriteLine("eyee");
             int res = 0;
             while (dataQueue.TryDequeue(out res))
             {
-                dataHistoryBox.Text += "," + res.ToString();
+                dataHistoryBox.AppendText("," + res.ToString());
+                if ((state == 0) && (res == 255))
+                {
+                    state = 5;
+                }
+                if (state == 5)
+                {
+                    dataHistoryBox.AppendText(Environment.NewLine);
+                    state = 1;
+                }
+                state += 1;
             }
         }
 
