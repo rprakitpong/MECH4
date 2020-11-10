@@ -1,0 +1,21 @@
+% p controller values
+pcontroller
+scopeConfig = get_param('pcontroller/Scope','ScopeConfiguration');
+scopeConfig.DataLogging = true;
+scopeConfig.DataLoggingSaveFormat = 'Dataset';
+out = sim('pcontroller');
+
+x1_data = out.ScopeData{1}.Values.Data(:,2);
+x1_time = out.ScopeData{1}.Values.Time;
+
+% rise time = 10% to 90%
+steadystate = x1_data(25001,1);
+[~,idx] = min(abs(x1_data-steadystate*0.9));
+p90 = x1_time(idx);
+[~,idx] = min(abs(out(1, 1:7686)-steadystate*0.1));
+p10 = time(1, idx);
+risetime = p90 - p10;
+ 
+% overshoot = max - steady state
+maxVal = max(out);
+overshoot = maxVal - steadystate;
