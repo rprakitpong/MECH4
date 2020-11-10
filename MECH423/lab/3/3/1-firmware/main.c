@@ -181,16 +181,21 @@ void readEncoderFn()
         upperByte = 0x00;
     }
 
-    while ((UCA0IFG & UCTXIFG)==0);         // wait for flags to clear before transmitting
-    UCA0TXBUF = 0xFF;                        // Start byte
-    while ((UCA0IFG & UCTXIFG)==0);         // wait for flags to clear before transmitting
-    UCA0TXBUF = dir;             // Rotational direction byte
-    while ((UCA0IFG & UCTXIFG)==0);         // wait for flags to clear before transmitting
-    UCA0TXBUF = upperByte;             // transmit new position upper byte
-    while ((UCA0IFG & UCTXIFG)==0);         // wait for flags to clear before transmitting
-    UCA0TXBUF = lowerByte;             // transmit new position lower byte
-    while ((UCA0IFG & UCTXIFG)==0);         // wait for flags to clear before transmitting
-    UCA0TXBUF = escByte;               // transmit escape byte
+    while ((UCA0IFG & UCTXIFG) == 0)
+        ;
+    UCA0TXBUF = 0xFF;
+    while ((UCA0IFG & UCTXIFG) == 0)
+        ;
+    UCA0TXBUF = dir;
+    while ((UCA0IFG & UCTXIFG) == 0)
+        ;
+    UCA0TXBUF = upperByte;
+    while ((UCA0IFG & UCTXIFG) == 0)
+        ;
+    UCA0TXBUF = lowerByte;
+    while ((UCA0IFG & UCTXIFG) == 0)
+        ;
+    UCA0TXBUF = escByte;
 }
 
 int main(void)
@@ -226,8 +231,8 @@ int main(void)
     // Set PWM out
     TB1CCR0 = 65536;
     TB1CCTL1 = OUTMOD_7;
-    //TB1CCR1 = 30000;
     TB1CCR1 = 30000;
+    //TB1CCR1 = 0;
     TB1CTL = TBSSEL_2 + MC_2 + TBCLR;
 
     // READ ENCODER

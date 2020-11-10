@@ -96,7 +96,7 @@ namespace _1_cs
             posChart.AxisY.Add(new Axis
             {
                 MinValue = 0,
-                MaxValue = 540
+                MaxValue = 255
             });
             posChart.AxisX.Add(new Axis
             {
@@ -118,8 +118,8 @@ namespace _1_cs
             velChart.AxisY.Clear();
             velChart.AxisY.Add(new Axis
             {
-                MinValue = 0,
-                MaxValue = 67000
+                MinValue = -1,
+                MaxValue = 1
             });
             velChart.AxisX.Add(new Axis
             {
@@ -234,6 +234,10 @@ namespace _1_cs
             }
         }
 
+        DateTime prevTime = DateTime.Now;
+        double prevPos = 0;
+        int velcounter = 0;
+        double vel = 0;
         private void getNewData()
         {
             while (serialIn.Peek() != 255)
@@ -246,6 +250,8 @@ namespace _1_cs
             int first = serialIn.Dequeue();
             int second = serialIn.Dequeue();
             int yy = serialIn.Dequeue();
+
+            DateTime timenow = DateTime.Now;
 
             if (yy == 3)
             {
@@ -260,13 +266,36 @@ namespace _1_cs
             }
             int pos = first * 255 + second;
 
-            posValBox.Text = discardInit255.ToString() + "," + direction.ToString() + "," + first.ToString() + "," + second.ToString() + "," + yy.ToString();
+            //posValBox.Text = discardInit255.ToString() + "," + direction.ToString() + "," + first.ToString() + "," + second.ToString() + "," + yy.ToString();
 
-            int gearRatio = 25;
-            int encoderResolution = 20;
-            double posCalculated = (4 * (double)pos) / (((double)gearRatio) * ((double)encoderResolution));
-            setNewPos(posCalculated);
-            setNewVel(pos);
+            if (velcounter > 15)
+            {
+                TimeSpan t = timenow.Subtract(prevTime);
+                vel = (pos - prevPos) / t.TotalMilliseconds;
+                if (t.TotalMilliseconds == 0)
+                {
+                    if (pos - prevPos < 0)
+                    {
+                        vel = -999;
+                    }
+                    else
+                    {
+                        vel = 999;
+                    }
+                }
+                prevTime = timenow;
+                prevPos = pos;
+
+                velcounter = 0;
+            }
+            else
+            {
+                velcounter++;
+            }
+
+
+            setNewPos(pos % 255);
+            setNewVel(vel);
         }
 
         private int velIndex = 0;
@@ -287,7 +316,7 @@ namespace _1_cs
         private int posIndex = 0;
         private void setNewPos(double data)
         {
-            //posValBox.Text = data.ToString();
+            posValBox.Text = data.ToString();
             ChartValues_pos.Add(new MeasureModel
             {
                 index = posIndex,
