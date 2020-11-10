@@ -1,0 +1,11 @@
+list = dir("*.mat");
+allNames = {list.name};
+for k = 1 : length(allNames)
+   % load all data from each file
+   name = allNames{k};
+   data = load(name);
+   time = data.output.time;
+   in = data.output.CH1in;
+   out = data.output.CH1out;
+   sig = data.output.CH1sig;
+end

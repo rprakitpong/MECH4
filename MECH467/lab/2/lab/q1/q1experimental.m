@@ -8,17 +8,6 @@ for k = 1 : length(allNames)
    in = data.output.CH1in;
    out = data.output.CH1out;
    sig = data.output.CH1sig;
-    
-   %{
-   clf();
-   hold on;
-   title(name);
-   plot(time, in);
-   plot(time, out);
-   plot(time, sig);
-   legend('in', 'out', 'sig');
-   saveas(gcf, name+".jpg");
-   %}
    
    % steady state at ~7686
    % rise time = 10% to 90%

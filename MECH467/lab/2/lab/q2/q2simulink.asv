@@ -1,0 +1,15 @@
+llController
+scopeConfig = get_param('llController/Scope','ScopeConfiguration');
+scopeConfig.DataLogging = true;
+scopeConfig.DataLoggingSaveFormat = 'Dataset';
+out = sim('llController');
+printSSE('ll controller', out);
+
+
+
+function printSSE(name, out)
+    ramp = out.ScopeData{1}.Values.Data(:,1);
+    response = out.ScopeData{1}.Values.Data(:,2);
+    sse = response(25001, 1) - ramp(25001, 1); % use last value, guaranteed steady state
+    disp(name);
+end
