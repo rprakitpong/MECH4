@@ -1,0 +1,654 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>q3</title><meta name="generator" content="MATLAB 9.9"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-11-24"><meta name="DC.source" content="q3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">1</a></li><li><a href="#2">2</a></li></ul></div><h2 id="1">1</h2><pre class="codeinput"><span class="comment">% init variables to be loaded into simulink model</span>
+T = 0.0001;
+Ka = 1;
+Kt = 0.49;
+Ke = 1.59;
+Jx = 0.000436;
+Bx = 0.0094;
+Jy = 0.0003;
+By = 0.0091;
+
+<span class="comment">% use LBW LLI controller</span>
+a = 13.9282;
+T_ = 0.0021323;
+Kx = 0.75858;
+Ky = 0.82224;
+Ki = 12.5664;
+
+LL = tf([a*T_ 1],[T_ 1]);
+I = tf([1 Ki],[1 0]);
+LLI_Lx_z = Kx*c2d(LL*I, T, <span class="string">'tustin'</span>);
+LLI_Ly_z = Ky*c2d(LL*I, T, <span class="string">'tustin'</span>);
+
+data = load(<span class="string">'sampleTraj.mat'</span>);
+Tplot = data.txy.t;
+xplot = data.txy.x;
+yplot = data.txy.y;
+
+<span class="comment">% run this in console after simulink is finished</span>
+<span class="comment">% output = out.sim</span>
+<span class="comment">% save simTraj output</span>
+
+<span class="comment">% run after simulink sim finished</span>
+toPlot = load(<span class="string">'simTraj.mat'</span>);
+clf;
+hold <span class="string">on</span>;
+title(<span class="string">'Input and simulated trajectory'</span>);
+plot(toPlot.output.Data(:,2), toPlot.output.Data(:,4));
+plot(toPlot.output.Data(:,3), toPlot.output.Data(:,5));
+xlabel(<span class="string">'x (mm)'</span>);
+ylabel(<span class="string">'y (mm)'</span>);
+legend(<span class="string">'Input'</span>, <span class="string">'Simulated'</span>);
+saveas(gcf, <span class="string">'qC1.png'</span>);
+</pre><img vspace="5" hspace="5" src="q3_01.png" alt=""> <h2 id="2">2</h2><pre class="codeinput">data = linearFromZero(5, 50);
+ti = data(end, 1);
+xi = data(end, 5);
+yi = data(end, 6);
+data = [data; circleCut(xi, yi, ti, 15)];
+ti = data(end, 1);
+xi = data(end, 5);
+yi = data(end, 6);
+data = [data; circleCut(xi, yi, ti, 5)];
+traj.t = data(:,1);
+traj.x = data(:,5);
+traj.y = data(:,6);
+save <span class="string">myTraj</span> <span class="string">traj</span>;
+clf;
+plot(data(:,5), data(:,6));
+title(<span class="string">'Custom toolpath'</span>);
+xlabel(<span class="string">'x (mm)'</span>);
+ylabel(<span class="string">'y (mm)'</span>);
+saveas(gcf, <span class="string">'qC2.png'</span>);
+
+<span class="keyword">function</span> data1 = linearFromZero(xf, yf)
+    A = 250;
+    T = 0.1;
+    T = T * 0.001;
+
+    xf = xf/2;
+    yf = yf/2;
+
+    L = ceil(sqrt(xf^2 + yf^2));
+    [T1, T2, T3] = calc(L);
+    T_total = T1+T2+T3;
+
+    x_ratio = xf/L;
+    y_ratio = yf/L;
+
+    t = 0;
+    s = 0;
+    sdot = 0;
+    sdotdot = A;
+    xr = 0;
+    yr = 0;
+    vxr = 0;
+    vyr = 0;
+    axr = A*x_ratio;
+    ayr = A*y_ratio;
+
+    count = 1;
+    data1 = zeros(T_total/T, 10);
+    <span class="keyword">while</span> t &lt;= T_total
+        data1(count, 1) = t;
+        data1(count, 2) = s;
+        data1(count, 3) = sdot;
+        data1(count, 4) = sdotdot;
+        data1(count, 5) = xr;
+        data1(count, 6) = yr;
+        data1(count, 7) = vxr;
+        data1(count, 8) = vyr;
+        data1(count, 9) = axr;
+        data1(count, 10) = ayr;
+
+        <span class="keyword">if</span> t &lt; T1
+            sdotdot = A;
+        <span class="keyword">elseif</span> t &gt;= T1 &amp;&amp; t &lt; T1+T2
+            sdotdot = 0;
+        <span class="keyword">else</span>
+            sdotdot = -A;
+        <span class="keyword">end</span>
+
+        sdot = sdot + T*sdotdot;
+        s = s + sdot*T;
+
+        xr = s*x_ratio;
+        yr = s*y_ratio;
+        vxr = sdot*x_ratio;
+        vyr = sdot*y_ratio;
+        axr = sdotdot*x_ratio;
+        ayr = sdotdot*y_ratio;
+
+        t = t + T;
+        count = count + 1;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> data = circleCut(xi, yi, ti, r)
+    A = 250;
+    T = 0.1;
+    T = T * 0.001;
+
+    L = 2*3.1415*r;
+    [T1, T2, T3] = calc(L);
+    T_total = T1+T2+T3;
+
+    x_ratio = 1;
+    y_ratio = 0;
+
+    t = 0;
+    s = 0;
+    sdot = 0;
+    sdotdot = A;
+    xr = 0;
+    yr = 0;
+    vxr = 0;
+    vyr = 0;
+    axr = A*x_ratio;
+    ayr = A*y_ratio;
+
+    count = 1;
+    data1 = zeros(T_total/T, 10);
+    <span class="keyword">while</span> t &lt;= T_total
+        <span class="keyword">if</span> t &lt; T1
+            sdotdot = A;
+        <span class="keyword">elseif</span> t &gt;= T1 &amp;&amp; t &lt; T1+T2
+            sdotdot = 0;
+        <span class="keyword">else</span>
+            sdotdot = -A;
+        <span class="keyword">end</span>
+
+        sdot = sdot + T*sdotdot;
+        s = s + sdot*T;
+
+        [x_ratio, y_ratio] = getRatios(s/L);
+
+        vxr_prev = vxr;
+        vyr_prev = vyr;
+        vxr = sdot*x_ratio;
+        vyr = sdot*y_ratio;
+
+        xr = xr + vxr*T;
+        yr = yr + vyr*T;
+
+        axr = (vxr - vxr_prev)/T;
+        ayr = (vyr - vyr_prev)/T;
+
+        data1(count, 1) = t+ti;
+        data1(count, 2) = s;
+        data1(count, 3) = sdot;
+        data1(count, 4) = sdotdot;
+        data1(count, 5) = xr+xi;
+        data1(count, 6) = yr+yi;
+        data1(count, 7) = vxr;
+        data1(count, 8) = vyr;
+        data1(count, 9) = axr;
+        data1(count, 10) = ayr;
+
+        t = t + T;
+        count = count + 1;
+    <span class="keyword">end</span>
+
+    [T1, T2, T3] = calc(r); <span class="comment">% 60-40=20</span>
+    T_total = T1+T2+T3;
+
+    x_ratio = 1;
+    y_ratio = 0;
+
+    t = 0;
+    s = 0;
+    sdot = 0;
+    sdotdot = A;
+    xr = 0;
+    yr = 0;
+    vxr = 0;
+    vyr = 0;
+    axr = A*x_ratio;
+    ayr = A*y_ratio;
+
+    count = 1;
+    data2 = zeros(T_total/T, 10);
+    <span class="keyword">while</span> t &lt;= T_total
+        data2(count, 1) = t+data1(end, 1);
+        data2(count, 2) = s+data1(end, 2);
+        data2(count, 3) = sdot+data1(end, 3);
+        data2(count, 4) = sdotdot;
+        data2(count, 5) = xr+data1(end, 5);
+        data2(count, 6) = yr+data1(end, 6);
+        data2(count, 7) = vxr+data1(end, 7);
+        data2(count, 8) = vyr+data1(end, 8);
+        data2(count, 9) = axr;
+        data2(count, 10) = ayr;
+
+        <span class="keyword">if</span> t &lt; T1
+            sdotdot = A;
+        <span class="keyword">elseif</span> t &gt;= T1 &amp;&amp; t &lt; T1+T2
+            sdotdot = 0;
+        <span class="keyword">else</span>
+            sdotdot = -A;
+        <span class="keyword">end</span>
+
+        sdot = sdot + T*sdotdot;
+        s = s + sdot*T;
+
+        xr = s*x_ratio;
+        yr = s*y_ratio;
+        vxr = sdot*x_ratio;
+        vyr = sdot*y_ratio;
+        axr = sdotdot*x_ratio;
+        ayr = sdotdot*y_ratio;
+
+        t = t + T;
+        count = count + 1;
+    <span class="keyword">end</span>
+
+    data = [data1; data2];
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> [x_r, y_r] = getRatios(r)
+    x_r = 0;
+    y_r = 0;
+    <span class="keyword">if</span> r &lt; .25
+        theta = (pi/2)*(r/.25);
+        x_r = sin(theta);
+        y_r = -cos(theta);
+    <span class="keyword">elseif</span> r &gt;= .25 &amp;&amp; r &lt; 0.5
+        theta = (pi/2)*((r-0.25)/.25);
+        x_r = cos(theta);
+        y_r = sin(theta);
+    <span class="keyword">elseif</span> r &gt;= 0.5 &amp;&amp; r &lt; 0.75
+        theta = (pi/2)*((r-0.5)/.25);
+        x_r = -sin(theta);
+        y_r = cos(theta);
+    <span class="keyword">else</span>
+        theta = (pi/2)*((r-0.75)/.25);
+        x_r = -cos(theta);
+        y_r = -sin(theta);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="keyword">function</span> [T1, T2, T3] = calc(L)
+    A = 100; <span class="comment">% mm/s^2</span>
+    fc = 250; <span class="comment">% mm/s</span>
+    T = 0.1; <span class="comment">% ms</span>
+    T = T * 0.001; <span class="comment">% s</span>
+
+    T1 = fc/A;
+    T3 = T1;
+    s_init = A*T1*T1/2; <span class="comment">% this is 20</span>
+    T2 = (L-2*s_init)/fc;
+    T2 = ceil(T2/T)*T;
+    <span class="keyword">if</span> T2 &lt; 0
+        T2 = 0;
+        s_init = L/2;
+        T1 = sqrt(2*s_init/A);
+        T1 = ceil(T1/T)*T;
+        T3 = T1;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="q3_02.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% 1
+
+% init variables to be loaded into simulink model
+T = 0.0001;
+Ka = 1;
+Kt = 0.49;
+Ke = 1.59;
+Jx = 0.000436;
+Bx = 0.0094;
+Jy = 0.0003;
+By = 0.0091;
+
+% use LBW LLI controller
+a = 13.9282;
+T_ = 0.0021323;
+Kx = 0.75858;
+Ky = 0.82224;
+Ki = 12.5664;
+
+LL = tf([a*T_ 1],[T_ 1]);
+I = tf([1 Ki],[1 0]);
+LLI_Lx_z = Kx*c2d(LL*I, T, 'tustin');
+LLI_Ly_z = Ky*c2d(LL*I, T, 'tustin');
+
+data = load('sampleTraj.mat');
+Tplot = data.txy.t;
+xplot = data.txy.x;
+yplot = data.txy.y;
+
+% run this in console after simulink is finished
+% output = out.sim
+% save simTraj output
+
+% run after simulink sim finished
+toPlot = load('simTraj.mat');
+clf;
+hold on;
+title('Input and simulated trajectory');
+plot(toPlot.output.Data(:,2), toPlot.output.Data(:,4)); 
+plot(toPlot.output.Data(:,3), toPlot.output.Data(:,5));
+xlabel('x (mm)');
+ylabel('y (mm)');
+legend('Input', 'Simulated');
+saveas(gcf, 'qC1.png');
+
+%% 2
+
+data = linearFromZero(5, 50);
+ti = data(end, 1);
+xi = data(end, 5);
+yi = data(end, 6);
+data = [data; circleCut(xi, yi, ti, 15)];
+ti = data(end, 1);
+xi = data(end, 5);
+yi = data(end, 6);
+data = [data; circleCut(xi, yi, ti, 5)];
+traj.t = data(:,1);
+traj.x = data(:,5);
+traj.y = data(:,6);
+save myTraj traj;
+clf;
+plot(data(:,5), data(:,6));
+title('Custom toolpath');
+xlabel('x (mm)');
+ylabel('y (mm)');
+saveas(gcf, 'qC2.png');
+
+function data1 = linearFromZero(xf, yf)
+    A = 250;
+    T = 0.1; 
+    T = T * 0.001; 
+    
+    xf = xf/2;
+    yf = yf/2;
+    
+    L = ceil(sqrt(xf^2 + yf^2));
+    [T1, T2, T3] = calc(L); 
+    T_total = T1+T2+T3;
+
+    x_ratio = xf/L;
+    y_ratio = yf/L;
+
+    t = 0;
+    s = 0;
+    sdot = 0;
+    sdotdot = A;
+    xr = 0;
+    yr = 0;
+    vxr = 0;
+    vyr = 0;
+    axr = A*x_ratio;
+    ayr = A*y_ratio;
+
+    count = 1;
+    data1 = zeros(T_total/T, 10);
+    while t <= T_total
+        data1(count, 1) = t;
+        data1(count, 2) = s;
+        data1(count, 3) = sdot;
+        data1(count, 4) = sdotdot;
+        data1(count, 5) = xr;
+        data1(count, 6) = yr;
+        data1(count, 7) = vxr;
+        data1(count, 8) = vyr;
+        data1(count, 9) = axr;
+        data1(count, 10) = ayr;
+
+        if t < T1
+            sdotdot = A;
+        elseif t >= T1 && t < T1+T2
+            sdotdot = 0;
+        else
+            sdotdot = -A;
+        end
+
+        sdot = sdot + T*sdotdot;
+        s = s + sdot*T;
+
+        xr = s*x_ratio;
+        yr = s*y_ratio;
+        vxr = sdot*x_ratio;
+        vyr = sdot*y_ratio;
+        axr = sdotdot*x_ratio;
+        ayr = sdotdot*y_ratio;
+
+        t = t + T;
+        count = count + 1;
+    end
+end
+
+function data = circleCut(xi, yi, ti, r)
+    A = 250;
+    T = 0.1; 
+    T = T * 0.001; 
+
+    L = 2*3.1415*r;
+    [T1, T2, T3] = calc(L); 
+    T_total = T1+T2+T3;
+
+    x_ratio = 1;
+    y_ratio = 0;
+    
+    t = 0;
+    s = 0;
+    sdot = 0;
+    sdotdot = A;
+    xr = 0;
+    yr = 0;
+    vxr = 0;
+    vyr = 0;
+    axr = A*x_ratio;
+    ayr = A*y_ratio;
+
+    count = 1;
+    data1 = zeros(T_total/T, 10);
+    while t <= T_total
+        if t < T1
+            sdotdot = A;
+        elseif t >= T1 && t < T1+T2
+            sdotdot = 0;
+        else
+            sdotdot = -A;
+        end
+
+        sdot = sdot + T*sdotdot;
+        s = s + sdot*T;
+
+        [x_ratio, y_ratio] = getRatios(s/L);
+
+        vxr_prev = vxr;
+        vyr_prev = vyr;
+        vxr = sdot*x_ratio;
+        vyr = sdot*y_ratio;
+
+        xr = xr + vxr*T;
+        yr = yr + vyr*T;
+
+        axr = (vxr - vxr_prev)/T;
+        ayr = (vyr - vyr_prev)/T;
+
+        data1(count, 1) = t+ti;
+        data1(count, 2) = s;
+        data1(count, 3) = sdot;
+        data1(count, 4) = sdotdot;
+        data1(count, 5) = xr+xi;
+        data1(count, 6) = yr+yi;
+        data1(count, 7) = vxr;
+        data1(count, 8) = vyr;
+        data1(count, 9) = axr;
+        data1(count, 10) = ayr;
+
+        t = t + T;
+        count = count + 1;
+    end
+
+    [T1, T2, T3] = calc(r); % 60-40=20
+    T_total = T1+T2+T3;
+
+    x_ratio = 1;
+    y_ratio = 0;
+
+    t = 0;
+    s = 0;
+    sdot = 0;
+    sdotdot = A;
+    xr = 0;
+    yr = 0;
+    vxr = 0;
+    vyr = 0;
+    axr = A*x_ratio;
+    ayr = A*y_ratio;
+
+    count = 1;
+    data2 = zeros(T_total/T, 10);
+    while t <= T_total
+        data2(count, 1) = t+data1(end, 1);
+        data2(count, 2) = s+data1(end, 2);
+        data2(count, 3) = sdot+data1(end, 3);
+        data2(count, 4) = sdotdot;
+        data2(count, 5) = xr+data1(end, 5);
+        data2(count, 6) = yr+data1(end, 6);
+        data2(count, 7) = vxr+data1(end, 7);
+        data2(count, 8) = vyr+data1(end, 8);
+        data2(count, 9) = axr;
+        data2(count, 10) = ayr;
+
+        if t < T1
+            sdotdot = A;
+        elseif t >= T1 && t < T1+T2
+            sdotdot = 0;
+        else
+            sdotdot = -A;
+        end
+
+        sdot = sdot + T*sdotdot;
+        s = s + sdot*T;
+
+        xr = s*x_ratio;
+        yr = s*y_ratio;
+        vxr = sdot*x_ratio;
+        vyr = sdot*y_ratio;
+        axr = sdotdot*x_ratio;
+        ayr = sdotdot*y_ratio;
+
+        t = t + T;
+        count = count + 1;
+    end
+
+    data = [data1; data2];
+end
+
+function [x_r, y_r] = getRatios(r)
+    x_r = 0;
+    y_r = 0;
+    if r < .25
+        theta = (pi/2)*(r/.25);
+        x_r = sin(theta);
+        y_r = -cos(theta);
+    elseif r >= .25 && r < 0.5
+        theta = (pi/2)*((r-0.25)/.25);
+        x_r = cos(theta);
+        y_r = sin(theta);
+    elseif r >= 0.5 && r < 0.75
+        theta = (pi/2)*((r-0.5)/.25);
+        x_r = -sin(theta);
+        y_r = cos(theta);
+    else
+        theta = (pi/2)*((r-0.75)/.25);
+        x_r = -cos(theta);
+        y_r = -sin(theta);
+    end
+end
+
+function [T1, T2, T3] = calc(L)
+    A = 100; % mm/s^2
+    fc = 250; % mm/s
+    T = 0.1; % ms
+    T = T * 0.001; % s
+
+    T1 = fc/A;
+    T3 = T1;
+    s_init = A*T1*T1/2; % this is 20
+    T2 = (L-2*s_init)/fc;
+    T2 = ceil(T2/T)*T;
+    if T2 < 0
+        T2 = 0;
+        s_init = L/2;
+        T1 = sqrt(2*s_init/A);
+        T1 = ceil(T1/T)*T;
+        T3 = T1;
+    end
+end
+
+
+##### SOURCE END #####
+--></body></html>
