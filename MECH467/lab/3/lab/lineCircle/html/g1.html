@@ -1,0 +1,242 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>g1</title><meta name="generator" content="MATLAB 9.9"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-12-01"><meta name="DC.source" content="g1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">set up</a></li><li><a href="#2">plot error</a></li><li><a href="#3">plot toolpath</a></li></ul></div><h2 id="1">set up</h2><pre class="codeinput">name = <span class="string">'lli.mat'</span>;
+lli = load(name);
+time = lli.lli.X.Data;
+x_act = lli.lli.Y(1).Data;
+y_act = lli.lli.Y(2).Data;
+x_ref = lli.lli.Y(3).Data;
+y_ref = lli.lli.Y(4).Data;
+
+<span class="comment">% init variables to be loaded into simulink model</span>
+T = 0.0001;
+Ka = 1;
+Kt = 0.49;
+Ke = 1.59;
+Jx = 0.000436;
+Bx = 0.0094;
+Jy = 0.0003;
+By = 0.0091;
+
+<span class="comment">% use LBW LLI controller</span>
+a = 13.9282;
+T_ = 0.0021323;
+Kx = 0.75858;
+Ky = 0.82224;
+Ki = 12.5664;
+
+LL = tf([a*T_ 1],[T_ 1]);
+I = tf([1 Ki],[1 0]);
+LLI_Lx_z = Kx*c2d(LL*I, T, <span class="string">'tustin'</span>);
+LLI_Ly_z = Ky*c2d(LL*I, T, <span class="string">'tustin'</span>);
+
+Tplot = time';
+xplot = x_ref';
+yplot = y_ref';
+
+sim(<span class="string">'e2_sim.slx'</span>);
+
+t_sim = ans.sim.Data(:,1);
+x_sim_ref = ans.sim.Data(:,2);
+x_sim = ans.sim.Data(:,3);
+y_sim_ref = ans.sim.Data(:,4);
+y_sim = ans.sim.Data(:,5);
+</pre><img vspace="5" hspace="5" src="g1_01.png" alt=""> <h2 id="2">plot error</h2><pre class="codeinput">e_x_sim = x_sim_ref - x_sim;
+e_y_sim = y_sim_ref - y_sim;
+e_x_exp = x_ref - x_act;
+e_y_esp = y_ref - y_act;
+
+clf();
+hold <span class="string">on</span>;
+plot(time, e_x_exp);
+plot(time, e_y_esp);
+plot(t_sim, e_x_sim);
+plot(t_sim, e_y_sim);
+legend(<span class="string">'e_x experimental'</span>, <span class="string">'e_y experimental'</span>, <span class="string">'e_x simulated'</span>, <span class="string">'e_y simulated'</span>);
+title(<span class="string">'Error over time'</span>);
+xlabel(<span class="string">'Time (s)'</span>);
+ylabel(<span class="string">'Error (mm)'</span>);
+saveas(gcf, <span class="string">'G1-1.png'</span>);
+</pre><img vspace="5" hspace="5" src="g1_02.png" alt=""> <h2 id="3">plot toolpath</h2><pre class="codeinput">x_exp = x_act;
+y_exp = y_act;
+figure;
+clf();
+subplot(2,2,1);
+title(<span class="string">'R1'</span>);
+hold <span class="string">on</span>;
+plot(x_sim, y_sim);
+plot(x_exp, y_exp);
+legend(<span class="string">'Simulated'</span>, <span class="string">'Experimental'</span>);
+subplot(2,2,2);
+title(<span class="string">'R2'</span>);
+hold <span class="string">on</span>;
+plot(x_sim, y_sim);
+plot(x_exp, y_exp);
+subplot(2,2,3);
+title(<span class="string">'R3'</span>);
+hold <span class="string">on</span>;
+plot(x_sim, y_sim);
+plot(x_exp, y_exp);
+subplot(2,2,4);
+title(<span class="string">'R4'</span>);
+hold <span class="string">on</span>;
+plot(x_sim, y_sim);
+plot(x_exp, y_exp);
+</pre><img vspace="5" hspace="5" src="g1_03.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% set up
+name = 'lli.mat';
+lli = load(name);
+time = lli.lli.X.Data;
+x_act = lli.lli.Y(1).Data;
+y_act = lli.lli.Y(2).Data;
+x_ref = lli.lli.Y(3).Data;
+y_ref = lli.lli.Y(4).Data;
+
+% init variables to be loaded into simulink model
+T = 0.0001;
+Ka = 1;
+Kt = 0.49;
+Ke = 1.59;
+Jx = 0.000436;
+Bx = 0.0094;
+Jy = 0.0003;
+By = 0.0091;
+
+% use LBW LLI controller
+a = 13.9282;
+T_ = 0.0021323;
+Kx = 0.75858;
+Ky = 0.82224;
+Ki = 12.5664;
+
+LL = tf([a*T_ 1],[T_ 1]);
+I = tf([1 Ki],[1 0]);
+LLI_Lx_z = Kx*c2d(LL*I, T, 'tustin');
+LLI_Ly_z = Ky*c2d(LL*I, T, 'tustin');
+
+Tplot = time';
+xplot = x_ref';
+yplot = y_ref';
+
+sim('e2_sim.slx');
+
+t_sim = ans.sim.Data(:,1);
+x_sim_ref = ans.sim.Data(:,2);
+x_sim = ans.sim.Data(:,3);
+y_sim_ref = ans.sim.Data(:,4);
+y_sim = ans.sim.Data(:,5);
+
+%% plot error
+e_x_sim = x_sim_ref - x_sim;
+e_y_sim = y_sim_ref - y_sim;
+e_x_exp = x_ref - x_act;
+e_y_esp = y_ref - y_act;
+
+clf();
+hold on;
+plot(time, e_x_exp);
+plot(time, e_y_esp); 
+plot(t_sim, e_x_sim);
+plot(t_sim, e_y_sim); 
+legend('e_x experimental', 'e_y experimental', 'e_x simulated', 'e_y simulated');
+title('Error over time');
+xlabel('Time (s)');
+ylabel('Error (mm)');
+saveas(gcf, 'G1-1.png');
+
+%% plot toolpath
+x_exp = x_act;
+y_exp = y_act;
+figure;
+clf();
+subplot(2,2,1);
+title('R1');
+hold on;
+plot(x_sim, y_sim);
+plot(x_exp, y_exp);
+legend('Simulated', 'Experimental');
+subplot(2,2,2);
+title('R2');
+hold on;
+plot(x_sim, y_sim);
+plot(x_exp, y_exp);
+subplot(2,2,3);
+title('R3');
+hold on;
+plot(x_sim, y_sim);
+plot(x_exp, y_exp);
+subplot(2,2,4);
+title('R4');
+hold on;
+plot(x_sim, y_sim);
+plot(x_exp, y_exp);
+##### SOURCE END #####
+--></body></html>
