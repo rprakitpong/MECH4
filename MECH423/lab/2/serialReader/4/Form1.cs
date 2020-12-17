@@ -93,9 +93,9 @@ namespace _4
                 dataHistoryBox.AppendText("," + res.ToString());
                 if ((state == 0) && (res == 255))
                 {
-                    state = 5;
+                    state = 6;
                 }
-                if (state == 5)
+                if (state == 6)
                 {
                     dataHistoryBox.AppendText(Environment.NewLine);
                     state = 1;

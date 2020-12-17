@@ -85,7 +85,7 @@ namespace WindowsFormsApp1
                     send[4] = 0x03;
                 }
             }
-            Console.WriteLine(send.ToString());
+            Console.WriteLine(speed.ToString());
             serialPort.Write(send, 0, 5);
         }
 
