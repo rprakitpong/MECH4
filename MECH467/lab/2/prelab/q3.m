@@ -15,6 +15,7 @@ rlocus(Hd);
 saveas(gcf, 'q3a-disc.jpg');
 
 % b
+% can also use margin(H) instead of measuring manually
 bode(H);
 bode(Hd);
 
