@@ -1,0 +1,41 @@
+IN-PHASE
+
+1200rpm Frequency=  20.03 Hz, Acceleration Amplitude (V) = 0.025, Phase LEAD of Acceleration= 357.1, Time shift = 0.000
+1140rpm Frequency=  19.00 Hz, Acceleration Amplitude (V) = 0.023, Phase LEAD of Acceleration= 357.3, Time shift = 0.000
+1080rpm Frequency=  18.01 Hz, Acceleration Amplitude (V) = 0.021, Phase LEAD of Acceleration= 358.7, Time shift = 0.000
+1020rpm Frequency=  17.01 Hz, Acceleration Amplitude (V) = 0.019, Phase LEAD of Acceleration= 358.8, Time shift = 0.000
+960rpm  Frequency=  16.01 Hz, Acceleration Amplitude (V) = 0.018, Phase LEAD of Acceleration=  -0.9, Time shift = 0.063
+900rpm  Frequency=  15.01 Hz, Acceleration Amplitude (V) = 0.016, Phase LEAD of Acceleration=   0.1, Time shift = 0.067
+840rpm  Frequency=  14.01 Hz, Acceleration Amplitude (V) = 0.016, Phase LEAD of Acceleration=   0.9, Time shift = 0.071
+780rpm  Frequency=  13.01 Hz, Acceleration Amplitude (V) = 0.014, Phase LEAD of Acceleration=   7.0, Time shift = 0.075
+720rpm  Frequency=  12.01 Hz, Acceleration Amplitude (V) = 0.016, Phase LEAD of Acceleration=   5.4, Time shift = 0.082
+660rpm  Frequency=  11.01 Hz, Acceleration Amplitude (V) = 0.010, Phase LEAD of Acceleration=   9.6, Time shift = 0.088
+600rpm  Frequency=  10.01 Hz, Acceleration Amplitude (V) = 0.024, Phase LEAD of Acceleration=  24.9, Time shift = 0.093
+**556-558rpm Frequency=   9.29 Hz, Acceleration Amplitude (V) = 0.039, Phase LEAD of Acceleration=  89.1, Time shift = 0.081
+540rpm  Frequency=   9.02 Hz, Acceleration Amplitude (V) = 0.029, Phase LEAD of Acceleration= 121.7, Time shift = 0.073
+480rpm  Frequency=   8.01 Hz, Acceleration Amplitude (V) = 0.007, Phase LEAD of Acceleration= 159.9, Time shift = 0.069
+420rpm  Frequency=   7.01 Hz, Acceleration Amplitude (V) = 0.003, Phase LEAD of Acceleration= 167.6, Time shift = 0.076
+360rpm  Frequency=   6.01 Hz, Acceleration Amplitude (V) = 0.001, Phase LEAD of Acceleration= 169.2, Time shift = 0.088
+300rpm  Frequency=   4.99 Hz, Acceleration Amplitude (V) = 0.001, Phase LEAD of Acceleration= 171.4, Time shift = 0.105
+240rpm  Frequency=   4.00 Hz, Acceleration Amplitude (V) = 0000.000, Phase LEAD of Acc0eleration= 179.4, Time shift = 0.125   
+
+OUT-OF-PHASE
+
+1200rpm Frequency=  20.02 Hz, Acceleration Amplitude (V) = 0.052, Phase LEAD of Acceleration= 177.0, Time shift = 0.025
+1140rpm Frequency=  19.01 Hz, Acceleration Amplitude (V) = 0.050, Phase LEAD of Acceleration= 176.6, Time shift = 0.027
+1080rpm Frequency=  18.01 Hz, Acceleration Amplitude (V) = 0.049, Phase LEAD of Acceleration= 177.2, Time shift = 0.028
+1020rpm Frequency=  17.02 Hz, Acceleration Amplitude (V) = 0.050, Phase LEAD of Acceleration= 177.4, Time shift = 0.030
+960rpm  Frequency=  16.00 Hz, Acceleration Amplitude (V) = 0.058, Phase LEAD of Acceleration= 187.2, Time shift = 0.030
+900rpm  Frequency=  15.00 Hz, Acceleration Amplitude (V) = 0.055, Phase LEAD of Acceleration= 177.4, Time shift = 0.034
+840rpm  Frequency=  14.01 Hz, Acceleration Amplitude (V) = 0.076, Phase LEAD of Acceleration= 179.5, Time shift = 0.036
+780rpm  Frequency=  13.00 Hz, Acceleration Amplitude (V) = 0.147, Phase LEAD of Acceleration= 199.0, Time shift = 0.034
+** 760rpm Frequency=  11.87 Hz, Acceleration Amplitude (V) = 0.421, Phase LEAD of Acceleration= 300.2, Time shift = 0.014
+720rpm  Frequency=  12.02 Hz, Acceleration Amplitude (V) = 0.051, Phase LEAD of Acceleration= 351.3, Time shift = 0.002
+660rpm  Frequency=  11.00 Hz, Acceleration Amplitude (V) = 0.014, Phase LEAD of Acceleration= 352.1, Time shift = 0.002
+600rpm  Frequency=  10.00 Hz, Acceleration Amplitude (V) = 0.004, Phase LEAD of Acceleration= 351.4, Time shift = 0.002
+540rpm  Frequency=   8.99 Hz, Acceleration Amplitude (V) = 0.001, Phase LEAD of Acceleration= 305.0, Time shift = 0.017
+480rpm  Frequency=   7.99 Hz, Acceleration Amplitude (V) = 0.002, Phase LEAD of Acceleration= 184.5, Time shift = 0.061
+420rpm  Frequency=   7.01 Hz, Acceleration Amplitude (V) = 0.003, Phase LEAD of Acceleration= 181.4, Time shift = 0.071
+360rpm  Frequency=   6.01 Hz, Acceleration Amplitude (V) = 0.014, Phase LEAD of Acceleration= 182.2, Time shift = 0.082
+300rpm  Frequency=   4.99 Hz, Acceleration Amplitude (V) = 0.004, Phase LEAD of Acceleration=  -2.4, Time shift = 0.202
+240rpm  Frequency=   3.99 Hz, Acceleration Amplitude (V) = 0.0001, Phase LEAD of Acceleration=   531.7, Time shift = 0.246….
