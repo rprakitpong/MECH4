@@ -1,0 +1,17 @@
+{
+    "date": "01-12-2020",
+    "startTime": "14:00:46",
+    "endTime": "15:32:44",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Team practice of critical function prototype presentation",
+        "Present critical function prototype to class, went well",
+        "Had a quick debriefing on the presentation"
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "date": "26-10-2020",
+    "startTime": "22:30:00",
+    "endTime": "23:00:00",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Team meeting about technical work progress",
+        "Talked about Github issues, project, and pull request",
+        "Most of progress has been on project management side, setting up the repo for easier future work",
+        "Gianni can help Hassan and Kevin catch up to speed on how to use Github later"
+    ]
+}

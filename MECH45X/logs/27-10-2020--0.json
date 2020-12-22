@@ -1,0 +1,14 @@
+{
+    "date": "27-10-2020",
+    "startTime": "11:22:36",
+    "endTime": "13:17:29",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong"
+    ],
+    "notes": [
+        "Work on #9, setting up event system to decouple classes",
+        "Fixed #7 and #14 along the way",
+        "Just set up a PR, waiting for review and merge"
+    ]
+}

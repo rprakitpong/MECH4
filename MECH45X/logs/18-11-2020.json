@@ -1,0 +1,15 @@
+{
+    "date": "18-11-2020",
+    "startTime": "19:41:27",
+    "endTime": "22:28:54",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Just configuring Raspberry Pi with stuff"
+    ]
+}

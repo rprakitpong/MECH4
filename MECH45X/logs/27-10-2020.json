@@ -1,0 +1,14 @@
+{
+    "date": "27-10-2020",
+    "startTime": "10:55:18",
+    "endTime": "11:22:16",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong"
+    ],
+    "notes": [
+        "Continue code review",
+        "Pulling Gianni's code to run",
+        "Fixed a minor bug and approved code to merge"
+    ]
+}

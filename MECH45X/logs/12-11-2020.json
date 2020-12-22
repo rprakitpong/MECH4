@@ -1,0 +1,19 @@
+{
+    "date": "12-11-2020",
+    "startTime": "15:00:08",
+    "endTime": "15:32:39",
+    "meetingType": "Supervisor meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Meeting with Vlad",
+        "Talked about critical function prototype",
+        "Talked about log book",
+        "Talked about reimbursement",
+        "Talked about presentation on Nov 19th (next week, this time)"
+    ]
+}

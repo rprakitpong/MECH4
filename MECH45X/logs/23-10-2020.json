@@ -1,0 +1,19 @@
+{
+    "date": "23-10-2020",
+    "startTime": "14:00:00",
+    "endTime": "14:47:11",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Impromtpu meeting to talk about software system ",
+        "Discussed this system design over UML diagram",
+        "Came up with classes relevant to each function in system",
+        "Decided that using events to communicate between classes will be good for now",
+        "Created issue tickets for new todos from this meeting"
+    ]
+}

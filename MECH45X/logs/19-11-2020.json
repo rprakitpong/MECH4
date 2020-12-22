@@ -1,0 +1,16 @@
+{
+    "date": "19-11-2020",
+    "startTime": "14:00:12",
+    "endTime": "14:31:11",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Practice for design paper review presentation",
+        "Talked to Gianni a bit about error when running code on Raspberry Pi"
+    ]
+}

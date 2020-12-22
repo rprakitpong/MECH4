@@ -1,0 +1,17 @@
+{
+    "date": "10-11-2020",
+    "startTime": "14:02:02",
+    "endTime": "14:49:26",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Gianni and I will continue working on assigned issues on issue page",
+        "Kevin and Hassan will get started on mech design, keeping work Google Drive",
+        "Selected paper for review (class assignment)"
+    ]
+}

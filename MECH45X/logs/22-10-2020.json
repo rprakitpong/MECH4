@@ -1,0 +1,16 @@
+{
+    "date": "22-10-2020",
+    "startTime": "17:54:44",
+    "endTime": "18:26:37",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Populating Github repo with to-dos so other members can see what technical tasks are to be done",
+        "Asked Gianni to put his expected tasks on there as well"
+    ]
+}

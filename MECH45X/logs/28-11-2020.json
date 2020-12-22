@@ -1,0 +1,17 @@
+{
+    "date": "28-11-2020",
+    "startTime": "19:03:43",
+    "endTime": "21:39:45",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Work on critical function prototype slides",
+        "Will present motors movement calculation software",
+        "Will review slides tomorrow"
+    ]
+}

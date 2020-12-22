@@ -1,13 +1,10 @@
 {
     "date": "15-10-2020",
     "startTime": "16:00:00",
-    "endTime": "21:28:10",
+    "endTime": "17:00:00",
     "meetingType": "Alone work time",
     "attendance": [
-        "Ratthamnoon Prakitpong",
-        "Gianni Co",
-        "Hassan Iqbal",
-        "Kevin Yang"
+        "Ratthamnoon Prakitpong"
     ],
     "notes": [
         "After supervisor meeting, wrote new draft of evaluation criteria section of proposal",

@@ -1,0 +1,18 @@
+{
+    "date": "29-10-2020",
+    "startTime": "14:00:42",
+    "endTime": "14:57:51",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "Team meeting to practice concepts presentation",
+        "Presented to stakeholders at 2:30pm",
+        "Answered questions from stakeholders, they really like the python stuff",
+        "Went well"
+    ]
+}
