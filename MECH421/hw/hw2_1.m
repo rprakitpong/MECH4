@@ -1,0 +1,17 @@
+r0 = 50;
+r1 = 1000;
+r2 = 1000;
+A = tf([10000], [.001 1.001 1]);
+L = -(r1/(r0+r1+r2))*A;
+Z = 1/(1-L);
+figure(1);
+hold on;
+margin(L);
+bode(Z);
+hold off;
+[Gm,Pm,Wcg,Wcp] = margin(L);
+cutoffFreq = bandwidth(Z);
+disp(Wcg);
+disp(Pm);
+disp(L);
+disp(Z);
