@@ -1,0 +1,16 @@
+{
+    "date": "25-01-2021",
+    "startTime": "14:56:36",
+    "endTime": "15:57:27",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Review drawings of some parts for steel structure",
+        "- Wrote comments on PR #51"
+    ]
+}

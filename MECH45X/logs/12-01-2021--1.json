@@ -1,0 +1,19 @@
+{
+    "date": "12-01-2021",
+    "startTime": "12:30:40",
+    "endTime": "13:03:14",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Design review on 3D print prototype with Gianni",
+        "- Conclusion: part looks fine",
+        "- I'll work on arm B and C",
+        "- Gianni work on base and platform",
+        "- Both finish our parts by Friday, do another design review next week"
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "date": "15-04-2021",
+    "startTime": "9:00:00",
+    "endTime": "17:00:00",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Worked on 12A (video) submission",
+		"- Finished writing video slides, scheduled time with team members, and recorded video",
+		"- Spent time editting video, and uploading",
+		"- Worked on privacy issues with Dr Vladan"
+    ]
+}

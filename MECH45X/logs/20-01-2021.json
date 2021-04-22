@@ -1,0 +1,19 @@
+{
+    "date": "20-01-2021",
+    "startTime": "12:00:14",
+    "endTime": "15:51:32",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Worked on code to send microstep GCode from python software to motor board",
+        "- Put it up for review",
+        "- Went to get 3D printed parts from Gianni",
+        "- Assembling 3D parts so we can test python software",
+        "- Review Gianni's sheet metal design of SPM"
+    ]
+}

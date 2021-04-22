@@ -1,0 +1,14 @@
+{
+    "date": "13-04-2021",
+    "startTime": "9:00:00",
+    "endTime": "17:00:00",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong"
+    ],
+    "notes": [
+        "- Worked on loading calculations based on comments received from Dr Noh's consulting",
+		"- Found that motors can support static and dynamic load (at low speed) of 10 kg",
+        "- Uploaded calculations to google drive and github"
+    ]
+}

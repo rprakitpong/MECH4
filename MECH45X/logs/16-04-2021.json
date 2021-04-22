@@ -1,0 +1,15 @@
+{
+    "date": "16-04-2021",
+    "startTime": "9:00:00",
+    "endTime": "17:00:00",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong"
+    ],
+    "notes": [
+        "- Finished finished electrical schematic of final prototype, and uploaded it to github",
+		"- Finished outstanding software issues",
+		"- Cleaned up project repository, and created v1.0 release of project",
+		"- Reviewed and added minor changes to final report"
+    ]
+}

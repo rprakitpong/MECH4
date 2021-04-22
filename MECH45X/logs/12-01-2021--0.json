@@ -1,0 +1,20 @@
+{
+    "date": "12-01-2021",
+    "startTime": "12:00:58",
+    "endTime": "12:24:06",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Quick meeting to see where everyone is at with the project and their personal lives, guage commitment ",
+        "- For mech design: 80% certain for success [issues: unexpected travel plan (ex border), computer issues]",
+        "- For manufacturing: 20% certain [issues: lost time and can't catch up]",
+        "- For software: 90% certain, since current sw fairly developed [limitations: not checking edge cases (ex singularities)]",
+        "- Team can still get class deliverables done, but the project scope has to be reduced",
+        ""
+    ]
+}

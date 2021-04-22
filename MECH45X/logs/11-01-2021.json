@@ -1,0 +1,20 @@
+{
+    "date": "11-01-2021",
+    "startTime": "14:20:22",
+    "endTime": "23:22:07",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Worked on CAD of 3D printed prototype",
+        "- Set up assembly and workflow",
+        "- Finished arm A",
+        "- Arm B and C are repeat process of arm A, so it's not that hard",
+        "- Still have to do motor mount and platform",
+        "- Put up a design review, now waiting for team members to review progress"
+    ]
+}

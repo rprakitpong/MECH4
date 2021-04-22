@@ -1,0 +1,18 @@
+{
+    "date": "14-04-2021",
+    "startTime": "9:00:00",
+    "endTime": "17:00:00",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Worked on final presentation slides with alone and with team members",
+		"- Presented to Markus, Dr Nima, and Dr Vladan",
+		"- Went well",
+		"- Worked on 12A (video) slides afterwards"
+    ]
+}

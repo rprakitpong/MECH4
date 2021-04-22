@@ -1,0 +1,17 @@
+{
+    "date": "13-01-2021",
+    "startTime": "18:24:03",
+    "endTime": "21:24:43",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Made arm B and C for 3d printed prototype",
+        "- Added Gianni's parts to assembly",
+        "- Put up a PR so the designs oculd be reviewed"
+    ]
+}

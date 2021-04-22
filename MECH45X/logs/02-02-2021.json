@@ -1,0 +1,17 @@
+{
+    "date": "02-02-2021",
+    "startTime": "14:00:51",
+    "endTime": "15:15:04",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Design review with Markus",
+        "- Reviewed full size robot design",
+        "- Will go back and review designs"
+    ]
+}

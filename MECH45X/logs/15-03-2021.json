@@ -1,0 +1,18 @@
+{
+    "date": "15-03-2021",
+    "startTime": "12:03:33",
+    "endTime": "17:07:26",
+    "meetingType": "Team meeting",
+    "attendance": [
+        "Ratthamnoon Prakitpong",
+        "Gianni Co",
+        "Hassan Iqbal",
+        "Kevin Yang"
+    ],
+    "notes": [
+        "- Came up with set of movements to experiment on",
+        "- Moved 3DP prototype by this set of movements to visually compare with simulation",
+        "- Ran into some issues, will start again tomorrow",
+        "- Helped out a bit with writing design review slides"
+    ]
+}

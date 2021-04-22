@@ -1,0 +1,15 @@
+{
+    "date": "12-04-2021",
+    "startTime": "9:00:00",
+    "endTime": "17:00:00",
+    "meetingType": "Alone work time",
+    "attendance": [
+        "Ratthamnoon Prakitpong"
+    ],
+    "notes": [
+        "- Make final fixes to 3DP prototype",
+        "- Run experiments on 3DP prototype",
+        "- Found that our control software can move platform accurately",	
+        "- Record findings on google drive"
+    ]
+}
