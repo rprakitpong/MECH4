@@ -32,7 +32,7 @@ options.FreqUnits = 'Hz';
 bode(L, options);
 grid on;
 % c
-Gxr = L/(1+L);
+Gxr = L/(1+L*Gs*ADC);
 Gxd = Gm/(1+L);
 step(Gxr);
 step(Gxd);
